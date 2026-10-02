@@ -1,2 +1,2 @@
-# Zoom
+# Meetx
 A full stack video conferencing web application.
