@@ -1,0 +1,15 @@
+# Backend .gitignore
+
+# Environment variable files — NEVER commit these
+.env
+.env.local
+.env.*.local
+
+# Node
+node_modules/
+
+# Build output
+dist/
+
+# OS
+.DS_Store

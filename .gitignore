@@ -1,0 +1,19 @@
+# Root .gitignore
+
+# Environment variable files — NEVER commit these
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Node
+node_modules/
+
+# Build output
+build/
+dist/
+
+# OS
+.DS_Store
+Thumbs.db
