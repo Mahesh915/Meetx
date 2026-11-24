@@ -1,96 +1,183 @@
-.landingPageContainer {
-  width: 100vw;
-  height: 100vh;
-  background: url("/public/background.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  color: white;
+/* ─── Reset ─────────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.landingPageContainer nav {
-  padding-inline: 1.2rem;
-  padding-block: 1.6rem;
+/* ─── Home Page ─────────────────────────────────────────────────────────── */
+.homeRoot {
+  min-height: 100vh;
+  background: #0d1117;
+  color: #e6edf3;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-
+  flex-direction: column;
 }
 
-.landingPageContainer nav h2 {
-  font-size: 1.8rem;
-  font-weight: 500;
-}
-
-.landingPageContainer nav .navlist {
-  display: flex;
-  gap: 1.6rem;
-  cursor: pointer;
-
-}
-
-.landingMainContainer {
-  display: flex;
-  justify-content: space-between;
-  padding-inline: 3rem;
-  height: 80vh;
-  align-items: center;
-}
-
-.landingMainContainer>div:nth-child(1) {
-  font-size: 2.2rem;
-}
-
-.landingMainContainer>div:nth-child(1) div[role='button'] {
-  background: #D97500;
-  width: fit-content;
-  padding: 1rem;
-  border-radius: 20px;
-  margin-top: 1.9rem;
-}
-
-.landingMainContainer>div:nth-child(1) div[role='button'] a {
-  text-decoration: none;
-  color: white;
-  font-size: 1.7rem;
-}
-
-.landingMainContainer>div:nth-child(2) img {
-  height: 70vh;
-  width: auto;
-}
-
-.navBar {
+/* Nav */
+.homeNav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-inline: 20px;
-  text-align: center;
-
+  padding: 14px 32px;
+  border-bottom: 1px solid #21262d;
+  background: #161b22;
+  position: sticky;
+  top: 0;
+  z-index: 50;
 }
-.meetContainer {
+
+.homeNavBrand {
   display: flex;
-  padding-inline: 20px;
-  height: 80vh;
-  gap: 10vw;
+  align-items: center;
+  gap: 8px;
+}
+
+.homeNavBrand span {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #e6edf3;
+}
+
+.homeNavActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Main content */
+.homeMain {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px 64px;
+  gap: 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.homeLeft {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 540px;
+}
+
+.homeHeadline {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800;
+  line-height: 1.2;
+  color: #e6edf3;
+}
+
+.homeAccent {
+  background: linear-gradient(135deg, #58a6ff, #1976d2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.homeSubtitle {
+  font-size: 1.05rem;
+  color: #8b949e;
+  line-height: 1.6;
+}
+
+.homeJoinRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.homeDivider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #8b949e;
+  font-size: 0.85rem;
+}
+
+.homeDivider::before,
+.homeDivider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #21262d;
+}
+
+.homeRight {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
   justify-content: center;
 }
 
-
-
-.leftPanel {
-  height: 100%;
-  display: flex;
-  align-items: center;
-
-}
-
-.rightPanel {
-  display: flex;
-  align-items: center;
-}
-
-.rightPanel > img {
-  width: 30vw;
+.homeRight img {
+  width: min(380px, 40vw);
   height: auto;
   border-radius: 20px;
+  object-fit: contain;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .homeMain {
+    flex-direction: column;
+    padding: 40px 24px;
+    text-align: center;
+    align-items: center;
+  }
+
+  .homeLeft {
+    align-items: center;
+    max-width: 100%;
+  }
+
+  .homeJoinRow {
+    width: 100%;
+  }
+
+  .homeRight img {
+    width: min(260px, 70vw);
+  }
+}
+
+@media (max-width: 600px) {
+  .homeNav {
+    padding: 12px 16px;
+  }
+
+  .homeMain {
+    padding: 32px 16px;
+    gap: 32px;
+  }
+
+  .homeHeadline {
+    font-size: 1.8rem;
+  }
+
+  .homeJoinRow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .homeRight {
+    display: none; /* Hide illustration on small phones */
+  }
+}
+
+/* ─── Landing page (kept minimal — now uses inline styles) ──────────────── */
+/* Mobile hamburger visible on small screens */
+@media (max-width: 640px) {
+  .landing-nav-links {
+    display: none !important;
+  }
+  .landing-hamburger {
+    display: flex !important;
+  }
 }

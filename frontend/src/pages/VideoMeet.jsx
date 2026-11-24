@@ -670,7 +670,27 @@ export default function VideoMeetComponent() {
                         onChange={e => setUsername(e.target.value)}
                         onKeyDown={e => e.key === 'Enter' && connect()}
                         inputProps={{ maxLength: 40 }}
-                        sx={{ marginBottom: '16px' }}
+                        sx={{ 
+                            marginBottom: '16px',
+                            '& .MuiOutlinedInput-root': {
+                                color: '#e6edf3',
+                                '& fieldset': {
+                                    borderColor: '#30363d',
+                                },
+                                '&:hover fieldset': {
+                                    borderColor: '#58a6ff',
+                                },
+                                '&.Mui-focused fieldset': {
+                                    borderColor: '#58a6ff',
+                                },
+                            },
+                            '& .MuiInputLabel-root': {
+                                color: '#8b949e',
+                            },
+                            '& .MuiInputLabel-root.Mui-focused': {
+                                color: '#58a6ff',
+                            },
+                        }}
                     />
 
                     <Button
@@ -695,13 +715,21 @@ export default function VideoMeetComponent() {
         <div className={styles.meetRoot}>
             {/* ── Main video grid ─────────────────────────────────────────── */}
             <div
-                className={styles.videoGrid}
+                className={`${styles.videoGrid} ${(showChat || showParticipants) ? styles.withSidePanel : ''}`}
                 data-count={Math.min(totalParticipants, 9)}
             >
                 {/* Self tile */}
                 <div className={styles.videoTile}>
                     <video
-                        ref={localVideoRef}
+                        ref={ref => {
+                            if (ref) {
+                                localVideoRef.current = ref;
+                                // Ensure stream is attached when video element mounts
+                                if (localStreamRef.current && ref.srcObject !== localStreamRef.current) {
+                                    ref.srcObject = localStreamRef.current;
+                                }
+                            }
+                        }}
                         autoPlay
                         muted
                         playsInline

@@ -78,6 +78,15 @@
     overflow: hidden;
     /* Leave room for the control bar */
     padding-bottom: 80px;
+    /* Adjust when side panel is open */
+    transition: margin-right 0.3s ease;
+}
+
+/* When side panel is visible on desktop, shift videos left */
+@media (min-width: 769px) {
+    .videoGrid.withSidePanel {
+        margin-right: 320px;
+    }
 }
 
 /* 2 participants → 2 columns */
