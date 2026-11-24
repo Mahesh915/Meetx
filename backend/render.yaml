@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: meetx-backend
+    env: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: PORT
+        value: 8000
+      - key: MONGODB_URI
+        sync: false   # Set manually in Render dashboard
+      - key: CORS_ORIGIN
+        sync: false   # Set to your Vercel frontend URL
